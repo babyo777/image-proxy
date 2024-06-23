@@ -30,7 +30,7 @@ app.get("/", async (req, res) => {
       res.status(400).json({ message: "Image URL is required" });
     }
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
     res.status(500).json({ message: error.message });
   }
 });
