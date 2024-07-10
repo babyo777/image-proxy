@@ -6,13 +6,13 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 const streamifier = require("streamifier");
 
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.post("/", async (req, res) => {
-  const image = req.body.img;
+  const { img } = req.body;
   try {
-    if (image) {
-      const imageUrl = `${image}`;
+    if (img) {
+      const imageUrl = `${img}`;
       const imageBuffer = await axios.get(imageUrl, {
         responseType: "arraybuffer",
       });
