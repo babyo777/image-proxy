@@ -6,6 +6,8 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 const streamifier = require("streamifier");
 
+app.use(express.urlencoded({ extended: true }));
+
 app.post("/", async (req, res) => {
   const image = req.body.img;
   try {
