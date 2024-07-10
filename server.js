@@ -6,20 +6,11 @@ app.use(cors());
 const port = process.env.PORT || 4000;
 const streamifier = require("streamifier");
 
-app.get("/", async (req, res) => {
-  const image = req.query.url;
+app.post("/", async (req, res) => {
+  const image = req.body.img;
   try {
-    const _nc_ht = req.query._nc_ht;
-    const _nc_cat = req.query._nc_cat;
-    const _nc_ohc = req.query._nc_ohc;
-    const edm = req.query.edm;
-    const ccb = req.query.ccb;
-    const oh = req.query.oh;
-    const oe = req.query.oe;
-    const _nc_sid = req.query._nc_sid;
-
     if (image) {
-      const imageUrl = `${image}?_nc_ht=${_nc_ht}&_nc_cat=${_nc_cat}&_nc_ohc=${_nc_ohc}&edm=${edm}&ccb=${ccb}&oh=${oh}&oe=${oe}&_nc_sid=${_nc_sid}`;
+      const imageUrl = `${image}`;
       const imageBuffer = await axios.get(imageUrl, {
         responseType: "arraybuffer",
       });
